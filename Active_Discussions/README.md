@@ -21,10 +21,16 @@
 	3. Running your own Watch-Towers becomes expensive.
 
 
-* How does a wormhole attack work?
+* How does a wormhole attack work?<br>
+	<img src = "https://user-images.githubusercontent.com/44281/55712186-96498580-59ee-11e9-9d6c-7a9e5eee37cb.png" width="500" height ="500" ><br>
+	1. For wormhole attack to be successful there should be atleast 2 malicious node on same route. 
+	2. From the image attached its clearly shown that D directly reveals the secret/pre-image to B. This can be done using private channels as they are not listed publicaly.
+	3. Thereby gaining fees reward of C and C's HTLCs locktime will expire thus his/her txn will be reverted. <br>
+	References
+	* https://github.com/raiden-network/raiden/issues/3758
+	* https://suredbits.com/payment-points-part-1/
 	
-	1. Link - : https://github.com/raiden-network/raiden/issues/3758
-	2. https://suredbits.com/payment-points-part-1/
+	[Brian's Observation : ](https://twitter.com/munich_brian) If we looks at broader picture wormhole attack is kinda good for LN. The private connection which we were unaware of b/w B and D helps speed the transitions of preimage/secret. 
 
 * Can sender or receiver notice a wormhole attack?
 
