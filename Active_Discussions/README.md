@@ -62,3 +62,16 @@
 	* [LN Penalty](https://blog.chainside.net/understanding-payment-channels-4ab018be79d4#:~:text=Punishment-based%20payment%20channels).
 	* [LN-Unidriectional](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3840374) 
 
+* What privacy tradeoffs do trampoline payments have? How can they be mitigated?
+
+	1. As we know in LN we follow *Source based routing* sometimes it becomes harder to find the path from sender to receiver (depends on network topology).
+	2. Trampoline nodes are generally used to allow constrained devices to send/receive payments.
+	3. So sender tries to reach the nearest trampoline node which could help detect the path to destination.
+	4. It comes with the privacy tradeoff that we need to release the info related to receiving end to route payments.
+	5. To mitigate this sender is completely free to add more intermediate trampoline hops to the route to improve privacy (by effectively using longer routes) or to ensure a given node is able to witness the payment.<br>
+	
+	References :
+	* [Trampoline Routing docs](https://github.com/lightningnetwork/lightning-rfc/blob/trampoline-routing-no-gossip/proposals/trampoline.md#privacy)
+	* [Routing problems and solutions (rendezvous, trampoline)](https://www.youtube.com/watch?v=1O-bhcbh9vE)
+
+
