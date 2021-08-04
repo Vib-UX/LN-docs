@@ -49,3 +49,16 @@
 	* https://bitcoinops.org/en/topics/sighash_noinput/
 	* https://bitcoin.stackexchange.com/questions/87443/do-we-still-need-sighash-noinput-for-lightning-network
 
+* Why is a unidirectional channel easy to implement?
+
+	1. In case of unidirectional channel the flow of money is only in one direction. 
+	2. The fundee creates a 2-of-2 mutisig funding_txn and lock the funds by publishing it on-chain.
+	3. Therefore, In every iteration of commitment txn fundee only need to sign it with his/her secret key and change the output values.
+	4. Now whenever other party will feel that this the final commitment txn, they will sign it using their private key and publish it on-chain.
+
+	Similar is not the case with Bidirectional channels where the flow is both ways and either node can behave maliciously by trying to publish the most profitable txn rather than most recent one. Although we have *Time-based bi-directional payment channels* or *Punishment based bi-directional payment channels* but these are bit complex to implement w.r.t unidirectional channels.<br><br>
+	References :
+	* [Time-based bi-directional payment channels](https://blog.chainside.net/understanding-payment-channels-4ab018be79d4#:~:text=before%20that%20date.-,Time-based%20bi-directional%20payment%20channels,-While%20in%20a)
+	* [LN Penalty](https://blog.chainside.net/understanding-payment-channels-4ab018be79d4#:~:text=Punishment-based%20payment%20channels).
+	* [LN-Unidriectional](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3840374) 
+
