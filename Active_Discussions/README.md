@@ -74,4 +74,17 @@
 	* [Trampoline Routing docs](https://github.com/lightningnetwork/lightning-rfc/blob/trampoline-routing-no-gossip/proposals/trampoline.md#privacy)
 	* [Routing problems and solutions (rendezvous, trampoline)](https://www.youtube.com/watch?v=1O-bhcbh9vE)
 
+* Given the fact that Lightning is punishment-based and requires nodes to be online, could an attacker trick you into publishing old states and lose all your funds?
+
+	1. In [LN Penalty](https://river.com/learn/terms/l/lightning-network-penalty/) if a user publishes one of the previous commitment txn instead of the most recent one intentionally or unintentionally he/she suffers from very high penalty as the previous commitment txn's revocation key is already revealed/sent during the signing of most recent one.
+	2. Generally in LN there is a chance of connection breakdown when one of the two nodes goes offline.
+	3. While restablishing the connection a data loss is highly likely, thus you won't be able to verify which is the most recent state your corresponding node has.
+	4. He/she can claim one of the previous state to be the most recent one, as the data loss has occured on your side you will be tricked in publishing an old state.  
+	5. To avoid this user has to be active all the time to maintain the current state or use 3rd party( [Watchtowers](https://wiki.ion.radar.tech/tech/research/watchtowers)).<br>
+	
+	References :
+	* [LN-penalty Issues](https://www.investopedia.com/tech/bitcoin-lightning-network-problems/)
+	* [Revocable Transactions](https://www.derpturkey.com/revocable-transactions-with-ln-penalty/)
+	  
+
 
