@@ -86,5 +86,34 @@
 	* [LN-penalty Issues](https://www.investopedia.com/tech/bitcoin-lightning-network-problems/)
 	* [Revocable Transactions](https://www.derpturkey.com/revocable-transactions-with-ln-penalty/)
 	  
+* How can a griefing attack affect routing nodes and what are possible counter measures?
+
+	1. The attacker can try to flood one or several channels using unresolved HTLCs by controlling both sending and receiving end.
+	2. This is usually done to limit the routing of txn's from the attacked channel and diverting the HTLCs route to your channels thus earning rewards. Further In theory, an attacker could contact the victim (perhaps via a keysend message or in an "onion blob") and demand a ransom be paid to halt the attack.
+	3. Only 483 of these unresolved HTLCs are required to overwhelm a channel per direction. Once those HTLCs are in the channel, any transactions using that same channel direction are impossible, including a transaction to cooperatively close that channel.
+	![HTLCs](https://bitcoinmagazine.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_700/MTc5Mjk3ODA4ODk2NTY2OTc5/photo_2021-01-01_16-42-14.webp)
+
+	### Counter Measures :
+
+It is not possible today to fully prevent this type of attacks, but we can make the attacker's job
+harder by properly configuring channels:
+
+* the attacker needs to lock at least `htlc_minimum_msat * max_accepted_htlcs` of his own funds to
+  completely fill a channel, so you should use a reasonable value for `htlc_minimum_msat` (1 sat is
+  **not** a reasonable value for channels with a big capacity; it may be ok for smaller channels
+  though)
+* open redundant unannounced channels to your most profitable peers
+* implement relaying policies to avoid filling up channels: always keep X% of your HTLC slots
+  available, reserved for high-value HTLCs
+
+Long-lived controlled spams might also be mitigated by a relay policy rejecting too far in the
+future CLTV locktime or requiring a lower `cltv_expiry_delta`. This later mitigation may downgrade
+relay node security.<br><br>
+
+References :
+
+* [Griefing Attack - Article](https://bitcoinmagazine.com/technical/good-griefing-a-lingering-vulnerability-on-lightning-network-that-still-needs-fixing)
+* [Griefing-Penalty: Countermeasure for Griefing Attack in Lightning Network](https://arxiv.org/abs/2005.09327)
+* https://ieeexplore.ieee.org/document/9343090
 
 
