@@ -114,6 +114,28 @@ References :
 
 * [Griefing Attack - Article](https://bitcoinmagazine.com/technical/good-griefing-a-lingering-vulnerability-on-lightning-network-that-still-needs-fixing)
 * [Griefing-Penalty: Countermeasure for Griefing Attack in Lightning Network](https://arxiv.org/abs/2005.09327)
-* https://ieeexplore.ieee.org/document/9343090
+* https://ieeexplore.ieee.org/document/9343090 <br><br>
 
+* What are the advantages and disadvantages of multiparty channels?
+
+	![](https://themoneymongers.com/wp-content/uploads/2019/03/Channel-Factories.jpg)<br>
+	
+	Advantages :
+	1. Multiparty channels increases flexibility in LN, by reducing number of hops to settle on-chain.
+	2. It helps in speedy transition of HTLCs thus making it Lightning fast!
+	3. Further we can also have high liquidity in a channel due to multiple parties involved.
+	4. Moreover using Channel Factories we can subdivide the commitment_txn into sub groups of x-of-x multisig.
+	
+	Disadvantages :
+	1. To get the final commitment_txn settle on-chain all the parties should sign, which could lead to some disputes.
+	2. On-boarding members in between could lead to double spend (when stakes are involved).
+	3. Not suitable for LN-Penalty (due to maintenance of revocation keys for every iteration of commitment_txn, subdivision of channel states could lead to more complex structure.)
+
+References :
+
+* [Chaincode Labs - Mutiparty Channels](https://residency.chaincode.com/presentations/lightning/Multiparty_Channels.pdf)
+* [Channel Factory ](https://wiki.ion.radar.tech/tech/research/channel-factory)
+* [Mutiparty Channels by Christian Decker](https://www.youtube.com/watch?v=PUDWGH_MvmQ)
+
+	
 
