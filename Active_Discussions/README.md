@@ -95,26 +95,26 @@
 
 	### Counter Measures :
 
-It is not possible today to fully prevent this type of attacks, but we can make the attacker's job
-harder by properly configuring channels:
+	It is not possible today to fully prevent this type of attacks, but we can make the attacker's job
+	harder by properly configuring channels:
 
-* the attacker needs to lock at least `htlc_minimum_msat * max_accepted_htlcs` of his own funds to
-  completely fill a channel, so you should use a reasonable value for `htlc_minimum_msat` (1 sat is
-  **not** a reasonable value for channels with a big capacity; it may be ok for smaller channels
-  though)
-* open redundant unannounced channels to your most profitable peers
-* implement relaying policies to avoid filling up channels: always keep X% of your HTLC slots
-  available, reserved for high-value HTLCs
+	* the attacker needs to lock at least `htlc_minimum_msat * max_accepted_htlcs` of his own funds to
+	  completely fill a channel, so you should use a reasonable value for `htlc_minimum_msat` (1 sat is
+	  **not** a reasonable value for channels with a big capacity; it may be ok for smaller channels
+	  though)
+	* open redundant unannounced channels to your most profitable peers
+	* implement relaying policies to avoid filling up channels: always keep X% of your HTLC slots
+	  available, reserved for high-value HTLCs
 
-Long-lived controlled spams might also be mitigated by a relay policy rejecting too far in the
-future CLTV locktime or requiring a lower `cltv_expiry_delta`. This later mitigation may downgrade
-relay node security.<br><br>
+	Long-lived controlled spams might also be mitigated by a relay policy rejecting too far in the
+	future CLTV locktime or requiring a lower `cltv_expiry_delta`. This later mitigation may downgrade
+	relay node security.<br><br>
 
-References :
+	References :
 
-* [Griefing Attack - Article](https://bitcoinmagazine.com/technical/good-griefing-a-lingering-vulnerability-on-lightning-network-that-still-needs-fixing)
-* [Griefing-Penalty: Countermeasure for Griefing Attack in Lightning Network](https://arxiv.org/abs/2005.09327)
-* https://ieeexplore.ieee.org/document/9343090 <br><br>
+	* [Griefing Attack - Article](https://bitcoinmagazine.com/technical/good-griefing-a-lingering-vulnerability-on-lightning-network-that-still-needs-fixing)
+	* [Griefing-Penalty: Countermeasure for Griefing Attack in Lightning Network](https://arxiv.org/abs/2005.09327)
+	* https://ieeexplore.ieee.org/document/9343090 <br><br>
 
 * What are the advantages and disadvantages of multiparty channels?
 
@@ -131,11 +131,37 @@ References :
 	2. On-boarding members in between could lead to double spend (when stakes are involved).
 	3. Not suitable for LN-Penalty (due to maintenance of revocation keys for every iteration of commitment_txn, subdivision of channel states could lead to more complex structure.)
 
-References :
+	References :
 
-* [Chaincode Labs - Mutiparty Channels](https://residency.chaincode.com/presentations/lightning/Multiparty_Channels.pdf)
-* [Channel Factory ](https://wiki.ion.radar.tech/tech/research/channel-factory)
-* [Mutiparty Channels by Christian Decker](https://www.youtube.com/watch?v=PUDWGH_MvmQ)
+	* [Chaincode Labs - Mutiparty Channels](https://residency.chaincode.com/presentations/lightning/Multiparty_Channels.pdf)
+	* [Channel Factory ](https://wiki.ion.radar.tech/tech/research/channel-factory)
+	* [Mutiparty Channels by Christian Decker](https://www.youtube.com/watch?v=PUDWGH_MvmQ)
+
+* What's the difference between a MAC and an HMAC?
+
+	1. MAC : (Message Authentication code) ![MAC](https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/MAC.svg/661px-MAC.svg.png)
+		* Senders first hashes the msg
+		* Hashed msg is encrypted with symmetric key (MAC)
+		* Now MAC and msg is send.
+		* Receivers hashes the msg
+		* Decrypt the received msg using symmetric key
+		* Compare both the hashes.
+	
+	
+	2. HMAC : <br> ![image](https://media.springernature.com/original/springer-static/image/chp%3A10.1007%2F978-3-662-45043-7_52/MediaObjects/330104_1_En_52_Fig2_HTML.gif)
+		* Shared Key (Symmetric Key) is divided into 2 keys
+		* msg XOR with key_1_a
+		* Hashes the xor msg
+		* Now this hashed msg is encrypted with key_1_b (HMAC)
+		* Sneder sends the msg with HMAC
+		* Receiver finds the local HMAC and compare it with senders HMAC
+	
+	References :
+	
+	* [HMAC](https://www.youtube.com/watch?v=NU923LkfuvE)
+	* [CBC MAC](https://www.youtube.com/watch?v=BsWsJfIisvY&list=RDCMUCDf3VLjM5A4MntJvCfls4sQ&index=2)
+	* [HMAC vs MAC](https://security.stackexchange.com/questions/20129/how-and-when-do-i-use-hmac)
+
 
 	
 
