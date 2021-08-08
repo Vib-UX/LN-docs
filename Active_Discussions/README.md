@@ -139,7 +139,7 @@
 
 * What's the difference between a MAC and an HMAC?
 
-	1. MAC : (Message Authentication code) ![MAC](https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/MAC.svg/661px-MAC.svg.png)
+	1. MAC : (Message Authentication code) <br>![MAC](https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/MAC.svg/661px-MAC.svg.png)
 		* Senders first hashes the msg
 		* Hashed msg is encrypted with symmetric key (MAC)
 		* Now MAC and msg is send.
