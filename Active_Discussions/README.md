@@ -162,6 +162,23 @@
 	* [CBC MAC](https://www.youtube.com/watch?v=BsWsJfIisvY&list=RDCMUCDf3VLjM5A4MntJvCfls4sQ&index=2)
 	* [HMAC vs MAC](https://security.stackexchange.com/questions/20129/how-and-when-do-i-use-hmac)
 
+* What are routing hints and why are they important for private channels? Do they leak privacy?
+
+	1. Private channels are a term used to describe a channel that is not announced to the Lightning Network. The public cannot passively know that a channel exists between two nodes nor the UTXOs behind them. Only your channel partner knows this information by default.
+	2. To receive funds via private channels, you have to encode the private channel info into the invoice that you give to the sender. Unfortunately, channel IDs are determined by the UTXO info. Senders can tell what UTXOs make up your private channels. 
+	3. Not only do you reveal this info to each sender you request funds from, but it could also be probed by an attacker. It is possible to spam payments through a node in an attempt to hit an actual private channel by guessing the UTXO.
+	4.  An attacker starts by analyzing all transactions on the Bitcoin network and creating a set of UTXOs that sent to a multi-sig looking address. Once the attacker detects that a UTXO is used in a victim's private channel, the attacker can then attempt to guess who the other node is.
+	5.  They do this by replacing the node pubkey with one of the 20,000 nodes known by the Lightning network.
+	
+	References : 
+	
+	* https://medium.com/suredbits/lightning-network-101-privacy-245d98210ab
+	* [Analysis and Probing of Parallel Channels in the Lightning Network](https://eprint.iacr.org/2021/384.pdf)
+	* https://en.bitcoin.it/wiki/Privacy#Lightning_Network
+	* [Security and Privacy of Lightning Network Payments](https://arxiv.org/abs/2103.08576)
+
+
+
 
 	
 
