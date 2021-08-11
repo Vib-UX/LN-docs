@@ -30,13 +30,13 @@
 	* https://github.com/raiden-network/raiden/issues/3758
 	* https://suredbits.com/payment-points-part-1/
 	
-	[Brian's Observation : ](https://twitter.com/munich_brian) If we looks at broader picture wormhole attack is kinda good for LN. The private connection which we were unaware of b/w B and D helps speed the transitions of preimage/secret. 
+	[Brian's Observation : ](https://twitter.com/munich_brian) If we look at broader picture wormhole attack is kinda good for LN. The private connection which we were unaware of b/w B and D helps speed the transitions of preimage/secret. 
 
 * Can sender or receiver notice a wormhole attack?
 
 	1. Its hard to notice a wormhole attack because of [Onion Routing](https://www.geeksforgeeks.org/onion-routing/) which tends to keep the details hidden related to sender and receiver. 
 	2.	Once the HTLCs timeout happens the funds have been redirected to the intermediary nodes which are affected by wormhole attack and it looks like the payment have been reverted.
-	3. But stil there are ways in which we can remove the possibility of wormhole by including some sort of randomness in each hop so that malicious node won't be able to jump the intermediaries. For full solution you can refer [Wormhole Attacks Soln](https://suredbits.com/payment-points-part-1/#:~:text=There%20is%20an%20outstanding%20proposal%20that%20fixes%20this%20problem%20(as%20well%20as%20introducing%20a%20bunch%20of%20cool%20new))
+	3. But still there are ways in which we can remove the possibility of wormhole by including some sort of randomness in each hop so that malicious node won't be able to jump the intermediaries. For full solution you can refer [Wormhole Attacks Soln](https://suredbits.com/payment-points-part-1/#:~:text=There%20is%20an%20outstanding%20proposal%20that%20fixes%20this%20problem%20(as%20well%20as%20introducing%20a%20bunch%20of%20cool%20new))
 
 * Why do we need `SIGHASH_NOINPUT` for eltoo?
 	
@@ -153,7 +153,7 @@
 		* msg XOR with key_1_a
 		* Hashes the xor msg
 		* Now this hashed msg is encrypted with key_1_b (HMAC)
-		* Sneder sends the msg with HMAC
+		* Sender sends the msg with HMAC
 		* Receiver finds the local HMAC and compare it with senders HMAC
 	
 	References :
@@ -177,7 +177,18 @@
 	* https://en.bitcoin.it/wiki/Privacy#Lightning_Network
 	* [Security and Privacy of Lightning Network Payments](https://arxiv.org/abs/2103.08576)
 
+* How can just-in-time routing help with routing payments?
+	
+	1. In JIT routing, forwarding nodes send a circular payment to themselves if the balance of a channel is insufficient to forward a payment (channel rebalancing).
+	2. Its main idea is to mitigate the disadvantages from our current source based routing (i.e.: guessing a route that will work in the sense that it has enough liquidity in each channel) and make the routing process a little bit more like the best effort routing that we know from IP-forwarding.
+	3. . In the probing scenario, a JITsupporting node will not send an error message back if it is lacking funds on the attacked (probed) channel. Rather, it will interrupt the routing process, rebalance its channels, and continue forwarding the payment.
 
+	References :
+	
+	* [Whitepaper by René Pickhardt](https://lists.linuxfoundation.org/pipermail/lightning-dev/2019-March/001891.html)
+	* [Exploring Lightning Network Routing](https://blog.lightning.engineering/posts/2018/05/30/routing.html)
+	* [Onion Routing](https://www.youtube.com/watch?v=zaBY9_eEQWE)
+	* [5.2.3 JIT Routing](https://www.researchgate.net/publication/340374590_Probing_Channel_Balances_in_the_Lightning_Network)
 
 
 	
