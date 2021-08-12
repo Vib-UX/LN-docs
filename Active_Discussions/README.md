@@ -190,6 +190,18 @@
 	* [Onion Routing](https://www.youtube.com/watch?v=zaBY9_eEQWE)
 	* [5.2.3 JIT Routing](https://www.researchgate.net/publication/340374590_Probing_Channel_Balances_in_the_Lightning_Network)
 
+* If a channel is being closed unilaterally, and the commitment tx has a low fee, can one of the parties bump the fees with CPFP (spend their output with a high fee)? If not, why not?
 
+	1. When attacking at the commitment transaction level, which impacts all HTLCs outputs in that transaction. The attacker creates the following mempool split-brain:
+		* all miners have one version of the commitment transaction
+		* the rest of the network has another version of the commitment transaction
+	2. Thus one cannot bump the fees with CPFP (spend their output with a high fee) this is because without package relay, CPFP will not help our valid transaction propagate all the way to miners' mempools.
+	3. And even if you knew what transaction is in the miners' mempools somehow and wanted to use CPFP/carve-out to get that transaction to confirm (which unblocks the situation) you cannot propagate your carve-out to miners because your area of the network doesn't have the transaction from which you're carving out in their mempools, so they won't relay anything.
+	
+	References :
+	
+	* https://lists.linuxfoundation.org/pipermail/lightning-dev/2020-April/002639.html
+	* https://lists.linuxfoundation.org/pipermail/lightning-dev/2020-June/002758.html
+	* https://github.com/t-bast/lightning-docs/blob/master/pinning-attacks.md#pinning-attacks
 	
 
