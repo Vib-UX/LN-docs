@@ -203,5 +203,19 @@
 	* https://lists.linuxfoundation.org/pipermail/lightning-dev/2020-April/002639.html
 	* https://lists.linuxfoundation.org/pipermail/lightning-dev/2020-June/002758.html
 	* https://github.com/t-bast/lightning-docs/blob/master/pinning-attacks.md#pinning-attacks
+
+* How do watchtowers work with non-advertised channels when part of the graph is not known? Or with trampoline when the routing calculation is outsourced?
+
+	1.  To provide security even to parties that may go off-line for an extended period of time, watchtowers are protocols that enables such parties to delegate to a third party, called the custodian, to cancel execution forks on their behalf.
+	2. It implement unlinkable channel monitoring and recovery for Lightning network channels.
+	3. A watchtower doesn't really concern the trampoline routing but more focused on watching the blockchain to see when a particular transaction is broadcast to the mempool. If that transaction is flagged in its memory as part of an outdated contract, it broadcasts the latest version of the contract it knows about.
+	
+	References :
+	
+	* https://lists.linuxfoundation.org/pipermail/lightning-dev/2018-April/001196.html
+	* https://github.com/mit-dci/lit/tree/master/watchtower
+	* https://github.com/lightningnetwork/lnd/blob/master/docs/watchtower.md
+	
+
 	
 
