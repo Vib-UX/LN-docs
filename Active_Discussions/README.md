@@ -215,7 +215,3 @@
 	* https://lists.linuxfoundation.org/pipermail/lightning-dev/2018-April/001196.html
 	* https://github.com/mit-dci/lit/tree/master/watchtower
 	* https://github.com/lightningnetwork/lnd/blob/master/docs/watchtower.md
-	
-
-	
-
