@@ -14,7 +14,30 @@ Another construction we use is something called Sphinx which obfuscates the leng
 
 ## Source Based Onion Routing - Sphinx Mix format 
 
-  * The main idea of using Sphinx routing is to maintain the privacy the sender doesn't want to reveal its identity while routing payments.
-  * Git test
+  * The main idea of using Sphinx routing is to maintain the privacy, the sender doesn't want to reveal its identity and the payee's while routing payments.
+  * The nodes responsible for routing should acknowledge back if there is an error while routing.
+  * One more thing to keep in my mind that while routing, routing nodes need to be able to authenticate the onion, it shouldn't be like an obsolete onion with some random parameters.
+  *  That can be achieved using HMAC @ every hop.
+ 
+Onion Creation :  
+  * Header
+     * Version Byte
+     * 33 Byte compressed secp256k1 pubkey
+        * Not the sender Pubkey (node_id / static key) as it would reveal it's original identity in the network
+        * But an ephemeral pubkey that is only used to route this onion.
+  * Payload
+    * 1300 Hops_data
+    * 20 x 65 Bytes
+       * 32 per_hop
+         * 8: short_channel_id
+         * 8: amt_to_forward
+         * 4: outgoing_cltv_value
+         * 12: padding (for backwards compatibility)
+       * 32: HMAC   // This HMAC is used to verify the integrity of per_hop data
+       * … filler
+  * HMAC 
+    * 32 Byte // This HMAC is used for the entire onion integrity
+
+
 
 
