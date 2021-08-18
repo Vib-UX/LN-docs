@@ -38,6 +38,37 @@ Onion Creation :
   * HMAC 
     * 32 Byte // This HMAC is used for the entire onion integrity
 
+Eg. :
+
+![image](https://user-images.githubusercontent.com/40585900/129837446-d68be52d-fef2-4f11-b017-719366491f33.png)<br>
+As we know Onion is created in reverse direction, we start with David, the payload data for David is shown in the above image,
+  * here `SID:0` means that this the last hop there is no forwarding of onion after that.  
+  * Now this onion is encrypted with the shared secret b/w Alice and David only for this hop.
+
+Similarly we create an onion for Charlie 
+![image](https://user-images.githubusercontent.com/40585900/129840487-02572afe-9b0f-4437-883a-9d362f8dac90.png)<br>
+
+Here Charlie Payload fields suggests that Charlie is intended to 
+* **forward the amnt : 300** to **SID : 452** 
+* After that there is an encrypted onion with Ek_D which charlie wont be able to decrypt as its not intended for her to see. 
+* Now this whole onion gets encrypted using the shared secret b/w Alice and Charlie.
+
+Therefore it looks something like this : 
+![image](https://user-images.githubusercontent.com/40585900/129841575-cb06b0a3-d5d0-4ccf-921a-f9992a577d85.png)<br>
+
+Payload for Bob suggests that 
+* He should **forward the amnt : 301** to **SID : 74** 
+* Here amnt_forward is > then the amnt_forward in case of *Charlie* 
+* This difference act as the fee for *Charlie* to forward the onion.
+* Further Bob wont be able to decrypt the rest of the onion as shared secret b/w Alice and Charlie is not the same for Bob.
+
+References : 
+
+ * https://residency.chaincode.com/presentations/lightning/Multihop_Layer.pdf
+ * https://www.youtube.com/watch?v=yKdK-7AtAMQ
+ * https://www.youtube.com/watch?v=P7I-C0_sijg
+ * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6961907/
+ * https://docs.lightning.engineering/the-lightning-network/multihop-payments
 
 
 
