@@ -215,3 +215,15 @@
 	* https://lists.linuxfoundation.org/pipermail/lightning-dev/2018-April/001196.html
 	* https://github.com/mit-dci/lit/tree/master/watchtower
 	* https://github.com/lightningnetwork/lnd/blob/master/docs/watchtower.md
+
+* If you disagree about the fees with your peer, how do you negotiate them?
+	
+	1. One of the benefits of mutual close is that the fee rate can be negotiated down from the existing fee rate(which is generally expensive) to a more reasonable one.
+	2. In order for fee rate to converge, it has to be strictly between the self last proposed and the counterparty's last proposed value. 
+	3. This exchange continues using the channelID until both agree on the same fee or when one side fails the channel.
+	4. Eg. assuming the peer proposes a closing fee of 3000 satoshi and our estimate shows it must be 4000. “10”: our next proposal will be 4000-10=3990.
+	
+	References : 
+	
+	* https://lightning.readthedocs.io/lightning-close.7.html
+	* https://github.com/lightningnetwork/lightning-rfc/blob/master/02-peer-protocol.md#closing-negotiation-closing_signed
