@@ -227,3 +227,5 @@
 	
 	* https://lightning.readthedocs.io/lightning-close.7.html
 	* https://github.com/lightningnetwork/lightning-rfc/blob/master/02-peer-protocol.md#closing-negotiation-closing_signed
+
+* What variables other than htlc_min_val and max_num_htlcs could be tweaked to make it harder or less attractive for an attacker to try and lock up a channel?
