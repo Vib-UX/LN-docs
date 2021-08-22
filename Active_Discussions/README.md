@@ -229,3 +229,12 @@
 	* https://github.com/lightningnetwork/lightning-rfc/blob/master/02-peer-protocol.md#closing-negotiation-closing_signed
 
 * What variables other than htlc_min_val and max_num_htlcs could be tweaked to make it harder or less attractive for an attacker to try and lock up a channel?
+
+	1. Open redundant unannounced channels to your most profitable peers, not an optimal solution to the problem.
+	2. Implement relaying policies to avoid filling up channels: always keep X% of your HTLC slots available, reserved for high-value HTLCs
+	3. Further enabling the requirement of a lower `cltv_expiry_delta`.
+
+	References :
+
+	* https://github.com/t-bast/lightning-docs/blob/master/spam-prevention.md
+	* https://www.coindesk.com/bitcoin-lightning-network-vulnerabilities-not-exploited-yet
