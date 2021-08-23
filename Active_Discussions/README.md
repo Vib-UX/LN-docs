@@ -238,3 +238,5 @@
 
 	* https://github.com/t-bast/lightning-docs/blob/master/spam-prevention.md
 	* https://www.coindesk.com/bitcoin-lightning-network-vulnerabilities-not-exploited-yet
+
+* Would it be possible for channels to have a custom penalty agreement that does not take all the funds on a breach?
