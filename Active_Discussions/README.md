@@ -240,3 +240,12 @@
 	* https://www.coindesk.com/bitcoin-lightning-network-vulnerabilities-not-exploited-yet
 
 * Would it be possible for channels to have a custom penalty agreement that does not take all the funds on a breach?
+
+	1. In case of LN Penalty model, each party creates their own commitment transaction sign it and share among each other.
+	2. After this if the txn state become old they share the revocation keys for it in order to maintain fairness.
+	3. ![image](https://user-images.githubusercontent.com/40585900/130644589-d512aab5-4542-401d-821c-3b26121d4af4.png)<br> In the above image its evident that bob creates the commitment txn send it to Alice, If in future she publishes this txn then bob can use the AliceR (Alice's Revocation Key) and his own pubkey to spend Alice's output.
+	4. In order to have a custom penalty model instead of sharing the revocation key for the commitment we can create another txn and attach it to spend the output of other parties funds with maybe 70:30 ratio as per the scenario.
+	5. But this model also gives rise to many problems, Try to think about it?
+	
+	
+
