@@ -243,9 +243,16 @@
 
 	1. In case of LN Penalty model, each party creates their own commitment transaction sign it and share among each other.
 	2. After this if the txn state become old they share the revocation keys for it in order to maintain fairness.
-	3. ![image](https://user-images.githubusercontent.com/40585900/130644589-d512aab5-4542-401d-821c-3b26121d4af4.png)<br> In the above image its evident that bob creates the commitment txn send it to Alice, If in future she publishes this txn then bob can use the AliceR (Alice's Revocation Key) and his own pubkey to spend Alice's output.
+	  ![image](https://user-images.githubusercontent.com/40585900/130644589-d512aab5-4542-401d-821c-3b26121d4af4.png) 
+	3. In the above image its evident that bob creates the commitment txn send it to Alice, If in future she publishes this txn then bob can use the AliceR (Alice's Revocation Key) and his own pubkey to spend Alice's output.
 	4. In order to have a custom penalty model instead of sharing the revocation key for the commitment we can create another txn and attach it to spend the output of other parties funds with maybe 70:30 ratio as per the scenario.
 	5. But this model also gives rise to many problems, Try to think about it?
+	
+	References :
+	
+	* https://www.derpturkey.com/revocable-transactions-with-ln-penalty/
+	* https://bitcoin.stackexchange.com/questions/56764/how-does-lightning-transaction-revocation-work
+	* https://ocw.mit.edu/courses/media-arts-and-sciences/mas-s62-cryptocurrency-engineering-and-design-spring-2018/lecture-notes/MAS-S62S18-lec13.pdf
 	
 	
 
