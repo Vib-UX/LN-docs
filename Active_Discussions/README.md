@@ -268,6 +268,8 @@
 	* [Implementation --Brian Mancini](https://github.com/bmancini55/onion/blob/main/lib/ex4/index.ts)
 	* https://info.townsendsecurity.com/definitive-guide-to-encryption-key-management-fundamentals
 	* https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html
+
+* On the base layer, the quality of the nodes you connect to is largely irrelevant provided they are an honest peer. How does this differ in Lightning when opening a channel to a peer?
 	
 	
 
