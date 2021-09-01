@@ -270,6 +270,18 @@
 	* https://cheatsheetseries.owasp.org/cheatsheets/Key_Management_Cheat_Sheet.html
 
 * On the base layer, the quality of the nodes you connect to is largely irrelevant provided they are an honest peer. How does this differ in Lightning when opening a channel to a peer?
-	
+
+	1. Yes, If we are looking into the base layer we tend to broadcast the txn's once confirming its validity, If an honest node is connected to us it will be able to verify the txn and broadcast it further to its connection.
+	2. This is how we achieve consensus @ base layer.
+	3. Similar is not the case with LN, whenever we open a channel with other party their is a fee associated when opening and closing channel. Its highly recommended to open channel with trusted parties.
+	4. Once the channel is setup using a Funding txn, if there is a dishonest node the channel could experience a DoS attack, Spamming the channel with obsolete HTLC's.
+	5. Which ultimately could result in Unilateral close thus fee associated with it could be expensive to deal with.
+	6. Maintianing the Channel State is also a key, a node is preferred to be online for any discrepancy in the ledger and act accordingly.
+
+	References :
+
+	* https://btctranscripts.com/scalingbitcoin/tel-aviv-2019/edgedevplusplus/lightning-network-topology/
+	* https://www.youtube.com/watch?v=j2l_Ut4k1qI
+	* https://arxiv.org/ftp/arxiv/papers/1902/1902.07307.pdf
 	
 
