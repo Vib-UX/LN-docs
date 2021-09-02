@@ -283,5 +283,7 @@
 	* https://btctranscripts.com/scalingbitcoin/tel-aviv-2019/edgedevplusplus/lightning-network-topology/
 	* https://www.youtube.com/watch?v=j2l_Ut4k1qI
 	* https://arxiv.org/ftp/arxiv/papers/1902/1902.07307.pdf
+
+* What are the benefits and downsides of Rendezvous routing?
 	
 
