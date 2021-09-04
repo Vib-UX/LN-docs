@@ -285,5 +285,7 @@
 	* https://arxiv.org/ftp/arxiv/papers/1902/1902.07307.pdf
 
 * What are the benefits and downsides of Rendezvous routing?
+
+* In what scenarios is OP_CLTV used in Lightning and in what scenarios is OP_CSV used?
 	
 
