@@ -284,8 +284,12 @@
 	* https://www.youtube.com/watch?v=j2l_Ut4k1qI
 	* https://arxiv.org/ftp/arxiv/papers/1902/1902.07307.pdf
 
-* What are the benefits and downsides of Rendezvous routing?
+* What problem do commitment transactions solve? When a revoked commitment transaction is found, what outputs need to be resolved by the penalty transaction? What happens to the HTLCs?
 
-* In what scenarios is OP_CLTV used in Lightning and in what scenarios is OP_CSV used?
+	1. A commitment transaction is a transaction that pays each channel partner their channel balance and ensures that the channel partners do not have to trust each other. By signing a commitment transaction, each channel partner "commits" to the current balance and gives the other channel partner the ability to get their funds back whenever they want.
+	2. By holding a signed commitment transaction, each channel partner can get their funds even without the cooperation of the other channel partner. This protects them against the other channel partner’s disappearance, refusal to cooperate or attempt to cheat by violating the payment channel protocol.
+	3. 
+
+
 	
 
