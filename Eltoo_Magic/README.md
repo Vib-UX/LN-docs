@@ -5,7 +5,7 @@ Although curretly we are actively trying to implement LN-penalty model for light
 
 ## Introduction
 
-If you are a newbie :bow: and doesn't understand how things work in lightning world :question: I would recommend you to give a few mins read on [Lightning Guide](https://bitcoiner.guide/lightning/). It will help you understand why Lightning is required? and broader overview of LN. 
+If you are a newbie :bow: and doesn't understand how things work in lightning world :question: I would recommend you to give a few mins read on [Lightning Guide](https://bitcoiner.guide/lightning/). It will help you understand why Lightning is required? and provide broader overview of LN. 
 
 * **Unidirectional Channels** : <br> These are pretty straight forward. Suppose Alice wants to start a channel with Bob , She will open a LN channel with Bob and will create a `funding transaction` which ensures locking of a certain amount from Alice's side that she is willing to pay Bob in future transactions. This funding transaction will be published on bitcoin network which then can be spent by 2 of 2 multisig consisting of Alice and Bob's keys. In every iteration Alice will create a new 2 of 2 multisig output to Bob deducting her balance and updating Bob's balance sign it and send it to Bob (partially signed). Now its upto Bob he can publish the most recent/ profitable transaction in the end and publish it on bitcoin network. <br>
 ![LN-Unidriectional](https://image.slidesharecdn.com/bitcoinlightningnetworkandethereumprotocols-190909094720/95/bitcoin-lightning-network-and-ethereum-protocols-11-638.jpg?cb=1568023728)
@@ -22,7 +22,7 @@ Eltoo is a proposed upgrade to Bitcoin whose main goal is to improve layer two s
 * Without eltoo, each transaction in this process can only be signed once the previous one has been created. With eltoo, the settlement transaction can be signed at the same time as the funding transaction. This eliminates the need for the Lightning Network penalty, significantly simplifying the Lightning Network’s double spend protection.
 
 ![Eltoo](https://bitcoinexchangeguide.com/wp-content/uploads/2018/05/eltoo-blockstream-lightning-network.jpg)<br>
-Moreover for Eltoo to be be succesfully implemented we need to change the consensus protocol by introducing `SIGHASH_NOINPUT` which indeed would require a [soft-fork](https://www.investopedia.com/terms/s/soft-fork.asp) in the bitcoin network. 
+Moreover for Eltoo to be succesfully implemented we need to change the consensus protocol by introducing `SIGHASH_NOINPUT` which indeed would require a [soft-fork](https://www.investopedia.com/terms/s/soft-fork.asp) in the bitcoin network. 
 
 
 References : <br>
