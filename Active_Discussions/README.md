@@ -284,6 +284,19 @@
 	* https://www.youtube.com/watch?v=j2l_Ut4k1qI
 	* https://arxiv.org/ftp/arxiv/papers/1902/1902.07307.pdf
 
+* How do you split the fees in dual-funded channels?
+
+	1. Main Idea behind dual-funded channels is that we want both parties to make a collaborative effort in funding the channel during its opening.
+	2. Traditional way of opening a channel usually deals with one party funding the funding-txn with 2-of-2 Multisig. Thus party responsible for creating funding-txn deals with on-chain fees.
+	3. However, this can be eliminated incase of dual-funded channels where both parties declare their own set of inputs/outputs beforehand for funding txn.
+	4. Further signatures of this set get exchanged and we have the final funding-txn in which each party made a collaborative effort accordingly.
+
+	References :
+
+	* [Lisa Neigut -- Dual Funded c-lightning](https://www.youtube.com/watch?v=i_GxmNZjwhk)
+	* https://bitcoinops.org/en/topics/dual-funding/
+	
+
 * What problem do commitment transactions solve? When a revoked commitment transaction is found, what outputs need to be resolved by the penalty transaction? What happens to the HTLCs?
 
 	1. A commitment transaction is a transaction that pays each channel partner their channel balance and ensures that the channel partners do not have to trust each other. By signing a commitment transaction, each channel partner "commits" to the current balance and gives the other channel partner the ability to get their funds back whenever they want.
