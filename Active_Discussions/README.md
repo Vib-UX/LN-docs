@@ -301,7 +301,7 @@
 
 	1. A commitment transaction is a transaction that pays each channel partner their channel balance and ensures that the channel partners do not have to trust each other. By signing a commitment transaction, each channel partner "commits" to the current balance and gives the other channel partner the ability to get their funds back whenever they want.
 	2. By holding a signed commitment transaction, each channel partner can get their funds even without the cooperation of the other channel partner. This protects them against the other channel partner’s disappearance, refusal to cooperate or attempt to cheat by violating the payment channel protocol.
-	3. 
+	
 
 
 	
